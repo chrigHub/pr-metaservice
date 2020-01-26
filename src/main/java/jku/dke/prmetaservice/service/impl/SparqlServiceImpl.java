@@ -46,7 +46,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<SparqlTriple> findSparePartByFilter(List<FilterPraedicate> filters) {
+    public List<SparqlTriple> findSparepartByFilter(List<FilterPredicate> filters) {
         String queryString = new SparqlQueryBuilder.Builder().withFilter(filters).build();
 
         return performQeryAndExtractResultSet(queryString);

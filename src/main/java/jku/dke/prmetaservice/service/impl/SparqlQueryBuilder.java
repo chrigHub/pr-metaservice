@@ -15,8 +15,8 @@ public class SparqlQueryBuilder {
         public Builder() {
         }
 
-        public Builder withFilter(List<FilterPraedicate> filterDto) {
-            for (FilterPraedicate dto : filterDto) {
+        public Builder withFilter(List<FilterPredicate> filterPred) {
+            for (FilterPredicate dto : filterPred) {
                 select += " ?subject " + SparqlUtil.addUriToFilter(dto.getSearchPredicate())
                         + " "
                         + SparqlUtil.addUriToSearchSubject(dto) + ".";

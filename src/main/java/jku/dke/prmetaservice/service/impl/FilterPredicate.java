@@ -1,10 +1,10 @@
 package jku.dke.prmetaservice.service.impl;
 
-public class FilterPraedicate {
+public class FilterPredicate {
 
     private String searchPredicate, searchValue;
 
-    public FilterPraedicate(String searchPredicate, String searchValue) {
+    public FilterPredicate(String searchPredicate, String searchValue) {
         this.searchPredicate = searchPredicate;
         this.searchValue = searchValue;
     }
