@@ -1,5 +1,6 @@
 package jku.dke.prmetaservice.service.impl;
 
+import jku.dke.prmetaservice.entity.SparqlTriple;
 import jku.dke.prmetaservice.service.SparqlService;
 
 import java.io.BufferedReader;
@@ -43,4 +44,12 @@ public class SparqlServiceImpl implements SparqlService {
         }
         return list;
     }
+
+    @Override
+    public List<SparqlTriple> findSparePartByFilter(List<FilterPraedicate> filters) {
+        String queryString = new SparqlQueryBuilder.Builder().withFilter(filters).build();
+
+        return performQeryAndExtractResultSet(queryString);
+    }
+
 }
