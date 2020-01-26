@@ -35,6 +35,23 @@ For each dataset, click on **Upload Data** and choose the corresponding RDF File
 
 ## The Sparql endpoints can now be queried using the endpoint fuseki_ip:4040/audi/sparql?query={{query}}
 
+## Stop the container 
+
+```console
+docker stop sparqlservice
+```
+
+## Restart the container
+```console
+docker run sparqlservice
+```
+
+## Remove the container
+Attention: This will **Delete** the container and all data will be lost. All previous steps will have to be repeated at the next start. If you only want to power down your container, please refer to **Stop the container**.
+
+```console
+docker rm -f sparqlservice
+```
 
 ## Troubleshooting
 
