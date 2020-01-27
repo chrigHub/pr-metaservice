@@ -63,6 +63,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr th:each="results : ${resultList}">
+                            <td th:each="result : ${results}" th:text="${result}"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

@@ -2,22 +2,20 @@ package jku.dke.prmetaservice.service;
 
 import org.apache.jena.query.ResultSet;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 public interface SparqlService {
-    ResultSet getAllTriples(String endpoint);
+    List getAllTriples(String endpoint);
 
-    ResultSet getBrandsFromAudi();
-    ResultSet getModelsFromAudi();
-    ResultSet getPartsForAudiModel(String model);
+    List getBrandsFromAudi();
+    List getModelsFromAudi();
+    List getPartsForAudiModel(String model);
 
-    ResultSet getBrandsFromJoe();
-    ResultSet getModelsForBrandFromJoe(String brand);
-    ResultSet getPartsForModelFromJoe(String model);
+    List getBrandsFromJoe();
+    List getModelsForBrandFromJoe(String brand);
+    List getPartsForModelFromJoe(String model);
 
-    ResultSet getBrandsFromGs();
-    ResultSet getModelsForBrandFromGs(String brand);
-    ResultSet getPartsForModelFromGs(String model);
+    List getBrandsFromGs();
+    List getModelsForBrandFromGs(String brand);
+    List getPartsForModelFromGs(String model);
 }

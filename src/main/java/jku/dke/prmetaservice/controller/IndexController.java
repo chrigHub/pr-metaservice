@@ -4,7 +4,10 @@ import jku.dke.prmetaservice.entity.SparqlTriple;
 import jku.dke.prmetaservice.service.impl.SparqlServiceImpl;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class IndexController {
@@ -37,29 +40,13 @@ public class IndexController {
     }
 
     @PostMapping("/")
-    public String querySubmit(@ModelAttribute SparqlTriple triple){
+    public String querySubmit(@ModelAttribute SparqlTriple triple, Model model){
         String ds = "audi";
         String endpoint = "http://localhost:3030//"+ds+"/query";
-        ResultSet results = sparqlService.getAllTriples(endpoint);
-        log.info(results.toString());
-        /*
-        log.info("Subject: " + triple.getSubject());
-        log.info("Predicate: " + triple.getPredicate());
-        log.info("Object: " + triple.getObject());
-
-        String endpoint = "http://localhost:303/ds/query";
-        String query = "Select ?a ?b ? where {?a ?b ?c} limit 10";
-        String format = "format=application/json";
-
-        try{
-            query = "?query="+ URLEncoder.encode(query, StandardCharsets.UTF_8.toString());
-            URL url = new URL(endpoint + query + format);
-            List<String> res = this.sparqlService.query(url);
-            log.info(res.stream().reduce("", String::concat));
-        } catch (UnsupportedEncodingException | MalformedURLException e) {
-            e.printStackTrace();
-        }
-        */
+        List<String> resultList = new ArrayList<String>();
+        resultList = sparqlService.getAllTriples(endpoint);
+        model.addAttribute("resultList", resultList);
+        log.info(resultList.toString());
         return "index";
     }
 }
