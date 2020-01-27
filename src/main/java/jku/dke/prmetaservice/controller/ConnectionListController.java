@@ -1,27 +1,20 @@
 package jku.dke.prmetaservice.controller;
 
 import jku.dke.prmetaservice.entity.ConnectionInfo;
-import jku.dke.prmetaservice.entity.SparqlTriple;
-import jku.dke.prmetaservice.service.impl.SparqlServiceImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import org.slf4j.Logger;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
 @Controller
 public class ConnectionListController {
     private static final Logger log = LoggerFactory.getLogger(IndexController.class);
-    private SparqlServiceImpl sparqlService = new SparqlServiceImpl();
     private Set<String> brandSet = new HashSet<>();
     private Set<String> modelSet = new HashSet<>();
-    private SparqlTriple triple = new SparqlTriple();
 
 
 

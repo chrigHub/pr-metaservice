@@ -5,7 +5,7 @@ import org.apache.jena.query.ResultSet;
 import java.util.List;
 
 public interface SparqlService {
-    List<List<String>> getAllTriples(String endpoint);
+    List<List<String>> getAllTriples(String datastore);
 
     List<List<String>> getBrandsFromAudi();
     List<List<String>> getModelsFromAudi();

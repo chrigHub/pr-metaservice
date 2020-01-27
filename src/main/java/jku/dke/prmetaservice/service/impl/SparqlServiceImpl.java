@@ -1,18 +1,14 @@
 package jku.dke.prmetaservice.service.impl;
 
-import jku.dke.prmetaservice.controller.IndexController;
 import jku.dke.prmetaservice.service.SparqlService;
-import jku.dke.prmetaservice.utils.JenaUtils;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.file.LinkOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +18,16 @@ public class SparqlServiceImpl implements SparqlService {
 
     private String endpoint;
 
+    public SparqlServiceImpl(String endpoint){
+        this.endpoint = endpoint;
+    }
+
+
     @Override
-    public List<List<String>> getAllTriples(String endpoint) {
-        log.info("Formulating Query: getAllTriples");
+    public List<List<String>> getAllTriples(String datastore) {
+        log.info("Formulating Query: getAllTriples from "+datastore);
         String query = "Select ?a ?b ?c where {?a ?b ?c}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(endpoint, query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+datastore+"/query", query);
         return runQuery(queryExecution);
     }
 
