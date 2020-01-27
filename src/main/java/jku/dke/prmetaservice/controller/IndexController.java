@@ -34,24 +34,14 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model){
-
         this.sparqlService.setEndpoint("http://localhost:3030//");
-
-        this.sparqlService.getBrandsFromAudi().forEach(row -> {
-            row.forEach(entry -> {
-                this.brandSet.add(entry);
-            });
-        });
-        this.sparqlService.getBrandsFromGs().forEach(row -> {
-            row.forEach(entry -> {
-                this.brandSet.add(entry);
-            });
-        });
-        this.sparqlService.getBrandsFromJoe().forEach(row -> {
-            row.forEach(entry -> {
-                this.brandSet.add(entry);
-            });
-        });
+        if(this.brandSet.isEmpty()){
+            List<List<List<String>>> listsToCombine = new ArrayList<>();
+            listsToCombine.add(this.sparqlService.getBrandsFromAudi());
+            listsToCombine.add(this.sparqlService.getBrandsFromGs());
+            listsToCombine.add(this.sparqlService.getBrandsFromJoe());
+            this.brandSet = JenaUtils.combineResultListsToEntries(listsToCombine);
+        }
 
         model.addAttribute("sparql_triple", this.triple);
         model.addAttribute("brands", this.brandSet);
