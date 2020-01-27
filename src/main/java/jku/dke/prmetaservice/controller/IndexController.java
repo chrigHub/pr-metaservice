@@ -73,22 +73,26 @@ public class IndexController {
         return "index";
     }
 
-    @PostMapping("/search")
+    @GetMapping("/search")
     public String searchDB(Model model){
+        this.resultList = null;
+        this.resultSet = null;
         List<List<List<String>>> listsToCombine = new ArrayList<>();
-        if(this.model_choice.equals("Audi")){
+        if(this.brand_choice == null){
+            //TODO
+            //Get all?
+        }else if(this.brand_choice.equals("Audi")){
             listsToCombine.add(sparqlService.getModelsFromAudi());
-            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.model_choice));
-            listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.model_choice));
+            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.brand_choice));
+            listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.brand_choice));
             this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
-        }else if(this.model_choice == null){
-
         }else{
-            listsToCombine.add(sparqlService.getPartsForModelFromGs(this.model_choice));
-            listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
+            listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.brand_choice));
+            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.brand_choice));
             this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
         }
-        this.resultList = sparqlService.getPartsForModelFromGs(null);
+
+        model.addAttribute("resultList", this.resultSet);
         return "index";
     }
 
