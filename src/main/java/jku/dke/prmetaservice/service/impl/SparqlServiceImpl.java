@@ -43,7 +43,7 @@ public class SparqlServiceImpl implements SparqlService {
         log.info("getModelsFromAudi Start");
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "\n" +
-                "SELECT ?model ?modelstring\n" +
+                "SELECT ?modelstring\n" +
                 "WHERE {\n" +
                 "  ?model a audi:Model.\n" +
                 "  BIND(strafter(strafter(STR(?model), \"#\"), \"_\") as ?modelstring).\n" +
@@ -59,9 +59,10 @@ public class SparqlServiceImpl implements SparqlService {
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                 "\n" +
-                "SELECT ?part ?partstring ?category\n" +
+                "SELECT ?partstring ?price ?category\n" +
                 "WHERE {\n" +
                 "  ?part a ?category.\n" +
+                "  ?part audi:hasListPrice ?price.\n" +
                 "  ?category rdfs:subClassOf* audi:Part.\n" +
                 "  BIND(strafter(strafter(STR(?part), \"#\"), \"_\") as ?partstring).\n" +
                 "  audi:Audi_" + model + " audi:hasComponent ?part.\n" +
@@ -140,7 +141,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?model <http://www.w3.org/2000/01/rdf-schema#subClassOf> jcp:"+brand+".\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
-        log.info("getModelsForBrandFromJoe Start");
+        log.info("getModelsForBrandFromJoe End");
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -156,7 +157,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part jcp:hasPrice ?price.\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
-        log.info("getPartsForModelFromJoe Start");
+        log.info("getPartsForModelFromJoe End");
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
