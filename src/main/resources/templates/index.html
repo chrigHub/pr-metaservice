@@ -41,9 +41,9 @@
             </form>
             <form id="modelForm" action="/selectModel" method="post">
                 <div class="form-group col-md-12">
-                    <label for="model_select"><strong>Choose Model:</strong></label>
+                    <label for="model_select"><strong>Choose Model: (Selected: <span th:text="${brand_choice + ' ' + #strings.replace(model_choice,'_',' ')}"/>)</strong></label>
                     <select class="form-control" id="model_select" th:name="model">
-                        <option th:each="model : ${models}" th:value="${model}" th:text="${model}" th:selected="${model}==*{model_choice}"></option>
+                        <option th:each="model : ${models}" th:value="${model}" th:text="${brand_choice + ' ' + #strings.replace(model,'_',' ')}" th:selected="${model}==*{model_choice}"></option>
                     </select>
                 </div>
                 <div class="form-group col-md-12">
@@ -75,7 +75,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="results : ${resultList}">
-                            <td th:each="result : ${results}" th:text="${result}"></td>
+                            <td th:each="result : ${results}" th:text="${#strings.replace(result,'_',' ')}"></td>
                         </tr>
                     </tbody>
                 </table>
