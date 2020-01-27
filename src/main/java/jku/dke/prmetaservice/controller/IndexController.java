@@ -104,5 +104,14 @@ public class IndexController {
         return "index";
     }
 
-
+    @PostMapping("/selectModel")
+    public String selectModel (@RequestParam(name="model") String carModel, Model model){
+        this.model_choice = carModel;
+        model.addAttribute("sparql_triple", this.triple);
+        model.addAttribute("brands", this.brandSet);
+        model.addAttribute("brand_choice", this.brand_choice);
+        model.addAttribute("model", this.modelSet);
+        model.addAttribute("model_choice", this.model_choice);
+        return "index";
+    }
 }
