@@ -110,7 +110,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "WHERE {\n" +
                 "  ?part a gs:Product.\n" +
                 "  ?part gs:hasPrice ?price.\n" +
-                "  ?part gs:fitsFor gs:"+ model+".\n" +
+                "  ?part gs:fitsFor gs:"+ model+ ".\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
         log.info("getPartsForModelFromGs End");
