@@ -43,25 +43,13 @@ public class IndexController {
             this.brandSet = JenaUtils.combineResultListsToEntries(listsToCombine);
         }
 
-        model.addAttribute("sparql_triple", this.triple);
         model.addAttribute("brands", this.brandSet);
-        model.addAttribute("brand_choice", this.brand_choice);
         model.addAttribute("models", this.modelSet);
+        model.addAttribute("brand_choice", this.brand_choice);
         model.addAttribute("model_choice", this.model_choice);
-        log.info(this.brandSet.toString());
-        log.info("Entered get index");
         return "index";
     }
-
-    @PostMapping("/")
-    public String querySubmit(@ModelAttribute SparqlTriple triple, Model model){
-        String ds = "audi";
-        String endpoint = "http://localhost:3030//"+ds+"/query";
-        this.resultList = sparqlService.getAllTriples(endpoint);
-        model.addAttribute("resultList", this.resultList);
-        log.info(resultList.toString());
-        return "index";
-    }
+    
 
     @GetMapping("/search")
     public String searchDB(Model model){
@@ -72,13 +60,13 @@ public class IndexController {
             //TODO
             //Get all?
         }else if(this.brand_choice.equals("Audi")){
-            listsToCombine.add(sparqlService.getModelsFromAudi());
-            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.brand_choice));
-            listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.brand_choice));
+            listsToCombine.add(sparqlService.getPartsForAudiModel(this.model_choice));
+            listsToCombine.add(sparqlService.getPartsForModelFromGs(this.model_choice));
+            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.model_choice));
             this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
         }else{
-            listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.brand_choice));
-            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.brand_choice));
+            listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
+            listsToCombine.add(sparqlService.getPartsForModelFromGs(this.model_choice));
             this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
         }
 
@@ -88,27 +76,22 @@ public class IndexController {
 
     @PostMapping("/selectBrand")
     public String selectBrand (@RequestParam(name="brand") String brand, Model model){
-        this.sparqlService.setEndpoint("http://localhost:3030//");
         this.brand_choice = brand;
-
-        if (this.brand_choice != null) {
-            this.sparqlService.getModelsFromAudi().forEach(row -> {
-                row.forEach(entry -> {
-                    this.modelSet.add(entry);
-                });
-            });
-            this.sparqlService.getModelsForBrandFromGs(brand_choice).forEach(row -> {
-                row.forEach(entry -> {
-                    this.modelSet.add(entry);
-                });
-            });
-            this.sparqlService.getModelsForBrandFromJoe(brand_choice).forEach(row -> {
-                row.forEach(entry -> {
-                    this.modelSet.add(entry);
-                });
-            });
+        this.modelSet.clear();
+        this.model_choice = null;
+        List<List<List<String>>> listsToCombine = new ArrayList<>();
+        if (this.modelSet.isEmpty()) {
+            if(this.brand_choice.equals("Audi")){
+                listsToCombine.add(sparqlService.getModelsFromAudi());
+                listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.brand_choice));
+                listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.brand_choice));
+            }else{
+                listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.brand_choice));
+                listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.brand_choice));
+            }
+            this.modelSet = JenaUtils.combineResultListsToEntries(listsToCombine);
         }
-        model.addAttribute("sparql_triple", this.triple);
+
         model.addAttribute("brands", this.brandSet);
         model.addAttribute("brand_choice", this.brand_choice);
         model.addAttribute("models", this.modelSet);
@@ -119,7 +102,7 @@ public class IndexController {
     @PostMapping("/selectModel")
     public String selectModel (@RequestParam(name="model") String carModel, Model model){
         this.model_choice = carModel;
-        model.addAttribute("sparql_triple", this.triple);
+
         model.addAttribute("brands", this.brandSet);
         model.addAttribute("brand_choice", this.brand_choice);
         model.addAttribute("models", this.modelSet);

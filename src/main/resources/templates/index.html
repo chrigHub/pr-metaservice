@@ -17,7 +17,6 @@
         <button class="btn btn-dark col-1" type="submit" name="search" value="search">Search DB</button>
 
 </form>-->
-    <button class="btn btn-dark col-1" type="submit" name="search" value="search">Search DB</button>
 </div>
 <div class="container-fluid mt-5">
     <div class="row">
@@ -51,7 +50,7 @@
                     <input type="submit" value="Save" class="btn btn-success">
                 </div>
             </form>
-            <form id="modelForm" action="/selectModel" method="get">
+            <form id="modelForm" action="/selectModel" method="post">
                 <div class="form-group col-md-12">
                     <label for="model_select"><strong>Choose Model:</strong></label>
                     <select class="form-control" id="model_select" th:name="model">

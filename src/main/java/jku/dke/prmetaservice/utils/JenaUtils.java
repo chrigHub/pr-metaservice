@@ -56,7 +56,7 @@ public class JenaUtils {
             });
             resultList.add(entry);
         };
-        log.info("convertJenaResultSetToList()");
+        log.info("Done converting JenaResultSetToList()");
         return resultList;
     }
 }
