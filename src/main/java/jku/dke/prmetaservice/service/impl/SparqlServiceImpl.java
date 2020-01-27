@@ -141,7 +141,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?model <http://www.w3.org/2000/01/rdf-schema#subClassOf> jcp:"+brand+".\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
-        log.info("getModelsForBrandFromJoe Start");
+        log.info("getModelsForBrandFromJoe End");
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -157,7 +157,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part jcp:hasPrice ?price.\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
-        log.info("getPartsForModelFromJoe Start");
+        log.info("getPartsForModelFromJoe End");
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
