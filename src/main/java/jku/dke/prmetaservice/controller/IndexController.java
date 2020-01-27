@@ -16,16 +16,30 @@ import java.util.*;
 public class IndexController {
     private static final Logger log = LoggerFactory.getLogger(IndexController.class);
     private SparqlServiceImpl sparqlService = new SparqlServiceImpl();
-    private Set<String> resultSet = new HashSet<String>();
+    private Set<String> brandSet = new HashSet<String>();
 
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("sparqlTriple", new SparqlTriple());
-        this.sparqlService.setEndpoint("http://localhost:8080//");
+        this.sparqlService.setEndpoint("http://localhost:3030//");
 
-        //this.sparqlService.getBrandsFromGs();
-        //this.sparqlService.getBrandsFromJoe();
-
+        this.sparqlService.getBrandsFromAudi().forEach(row -> {
+            row.forEach(entry -> {
+                this.brandSet.add(entry);
+            });
+        });
+        this.sparqlService.getBrandsFromGs().forEach(row -> {
+            row.forEach(entry -> {
+                this.brandSet.add(entry);
+            });
+        });
+        this.sparqlService.getBrandsFromJoe().forEach(row -> {
+            row.forEach(entry -> {
+                this.brandSet.add(entry);
+            });
+        });
+        model.addAttribute("brands", this.brandSet);
+        log.info(this.brandSet.toString());
         log.info("Entered get index");
         return "index";
     }
