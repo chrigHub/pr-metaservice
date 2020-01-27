@@ -121,6 +121,7 @@ public class SparqlServiceImpl implements SparqlService {
         return queryExecution.execSelect();
     }
 
+    //Test
     @Override
     public ResultSet getPartsForModelFromJoe(String model) {
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
