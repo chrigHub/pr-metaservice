@@ -1,18 +1,19 @@
 package jku.dke.prmetaservice.service.impl;
 
-import jku.dke.prmetaservice.entity.SparqlTriple;
 import jku.dke.prmetaservice.service.SparqlService;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.ResultSet;
 
 public class SparqlServiceImpl implements SparqlService {
 
+    @Override
+    public ResultSet getAllTriples(String endpoint) {
+        String query = "Select ?a ?b ?c where {?a ?b ?c} limit 10";
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(endpoint, query);
+        return queryExecution.execSelect();
+    }
+/*
     @Override
     public List<String> query(URL url) {
         HttpURLConnection conn = null;
@@ -44,12 +45,6 @@ public class SparqlServiceImpl implements SparqlService {
         }
         return list;
     }
-
-    @Override
-    public List<SparqlTriple> findSparepartByFilter(List<FilterPredicate> filters) {
-        String queryString = new SparqlQueryBuilder.Builder().withFilter(filters).build();
-
-        return null; //performQeryAndExtractResultSet(queryString);
-    }
+    */
 
 }

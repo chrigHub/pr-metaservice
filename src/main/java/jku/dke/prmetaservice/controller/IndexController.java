@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.slf4j.Logger;
 
+import javax.xml.transform.Result;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -38,11 +39,9 @@ public class IndexController {
     @PostMapping("/")
     public String querySubmit(@ModelAttribute SparqlTriple triple){
         String ds = "audi";
-        String server = "http://localhost:3030//"+ds+"/query";
-        String query = "Select ?a ?b ?c where {?a ?b ?c} limit 10";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(server, query);
-        ResultSet result = queryExecution.execSelect();
-        log.info(result.toString());
+        String endpoint = "http://localhost:3030//"+ds+"/query";
+        ResultSet results = sparqlService.getAllTriples(endpoint);
+        log.info(results.toString());
         /*
         log.info("Subject: " + triple.getSubject());
         log.info("Predicate: " + triple.getPredicate());
