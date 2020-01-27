@@ -49,7 +49,7 @@ public class IndexController {
         model.addAttribute("model_choice", this.model_choice);
         return "index";
     }
-    
+
 
     @GetMapping("/search")
     public String searchDB(Model model){
@@ -102,7 +102,6 @@ public class IndexController {
     @PostMapping("/selectModel")
     public String selectModel (@RequestParam(name="model") String carModel, Model model){
         this.model_choice = carModel;
-
         model.addAttribute("brands", this.brandSet);
         model.addAttribute("brand_choice", this.brand_choice);
         model.addAttribute("models", this.modelSet);
