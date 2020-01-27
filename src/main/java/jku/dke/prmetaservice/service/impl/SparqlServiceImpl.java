@@ -65,7 +65,8 @@ public class SparqlServiceImpl implements SparqlService {
                 "SELECT ?part ?price\n" +
                 "WHERE {\n" +
                 "  ?part a ?category.\n" +
-                "  ?part audi:hasListPrice ?price.\n" +
+                "  ?part audi:hasListPrice ?pricenr.\n" +
+                "  Bind(STR(?pricenr) as ?price).\n" +
                 "  ?category rdfs:subClassOf* audi:Part.\n" +
                 "  audi:Audi_" + model + " audi:hasComponent ?part.\n" +
                 "}";
@@ -109,7 +110,8 @@ public class SparqlServiceImpl implements SparqlService {
                 "SELECT DISTINCT ?part ?price\n" +
                 "WHERE {\n" +
                 "  ?part a gs:Product.\n" +
-                "  ?part gs:hasPrice ?price.\n" +
+                "  ?part gs:hasPrice ?pricenr.\n" +
+                "  Bind(STR(?pricenr) as ?price).\n" +
                 "  ?part gs:fitsFor gs:"+ model+ ".\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
@@ -151,7 +153,8 @@ public class SparqlServiceImpl implements SparqlService {
                 "SELECT DISTINCT ?part ?price\n" +
                 "WHERE {\n" +
                 "  ?part jcp:belongsTo jcp:"+model+".\n" +
-                "  ?part jcp:hasPrice ?price.\n" +
+                "  ?part jcp:hasPrice ?pricenr.\n" +
+                "  Bind(STR(?pricenr) as ?price).\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
         return runQuery(queryExecution, "joescarparts");
