@@ -1,7 +1,10 @@
 package jku.dke.prmetaservice.controller;
 
 import jku.dke.prmetaservice.entity.SparqlTriple;
+import jku.dke.prmetaservice.service.SparqlService;
 import jku.dke.prmetaservice.service.impl.SparqlServiceImpl;
+import jku.dke.prmetaservice.service.impl.SparqlUtil;
+import jku.dke.prmetaservice.utils.JenaUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +21,12 @@ import java.util.*;
 public class IndexController {
     private static final Logger log = LoggerFactory.getLogger(IndexController.class);
     private SparqlServiceImpl sparqlService = new SparqlServiceImpl();
+    private JenaUtils util = new JenaUtils();
     private Set<String> brandSet = new HashSet<>();
     private Set<String> modelSet = new HashSet<>();
+    private Set<List<String>> resultSet = new HashSet<>();
     private SparqlTriple triple = new SparqlTriple();
+    private List<List<String>> resultList = new ArrayList<>();
 
 
     private String brand_choice;
@@ -28,6 +34,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model){
+
         this.sparqlService.setEndpoint("http://localhost:3030//");
 
         this.sparqlService.getBrandsFromAudi().forEach(row -> {
@@ -60,10 +67,29 @@ public class IndexController {
     public String querySubmit(@ModelAttribute SparqlTriple triple, Model model){
         String ds = "audi";
         String endpoint = "http://localhost:3030//"+ds+"/query";
-        List<List<String>> resultList = new ArrayList<>();
-        resultList = sparqlService.getAllTriples(endpoint);
-        model.addAttribute("resultList", resultList);
+        this.resultList = sparqlService.getAllTriples(endpoint);
+        model.addAttribute("resultList", this.resultList);
         log.info(resultList.toString());
+        return "index";
+    }
+
+    @PostMapping("/search")
+    public String searchDB(Model model){
+        List<List<List<String>>> listsToCombine = new ArrayList<>();
+        if(this.model_choice.equals("Audi")){
+            listsToCombine.add(sparqlService.getModelsFromAudi());
+            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.model_choice));
+            listsToCombine.add(sparqlService.getModelsForBrandFromGs(this.model_choice));
+            this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
+        }else if(this.model_choice == null){
+
+        }else{
+            listsToCombine.add(sparqlService.getPartsForModelFromGs(this.model_choice));
+            listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
+            this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
+        }
+        model.add
+        this.resultList = sparqlService.getPartsForModelFromGs(null);
         return "index";
     }
 
@@ -77,4 +103,6 @@ public class IndexController {
         model.addAttribute("model_choice", this.model_choice);
         return "index";
     }
+
+
 }
