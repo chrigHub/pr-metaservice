@@ -52,6 +52,20 @@
                     </div>
                 </div>
             </div>
+
+            <form id="brandForm" action="/selectBrand" method="get">
+                <div class="form-group col-md-12">
+                    <label for="brand_select"><strong>Choose Brand:</strong></label>
+                    <select class="form-control" id="brand_select" th:name="lenkertyp_choice">
+                        <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand}" th:selected="${brand}==*{brand_choice}"></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="submit" value="Speichern" class="btn btn-success">
+                </div>
+            </form>
+
+
             <h3>Table entries</h3>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">

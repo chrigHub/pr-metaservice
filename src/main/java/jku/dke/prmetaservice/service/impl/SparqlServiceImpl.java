@@ -32,7 +32,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?model a audi:Model.\n" +
                 "  BIND(strafter(strafter(STR(?model), \"#\"), \"_\") as ?modelstring).\n" +
                 "}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/audi", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"audi/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -48,7 +48,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  BIND(strafter(strafter(STR(?part), \"#\"), \"_\") as ?partstring).\n" +
                 "  audi:Audi_" + model + " audi:hasComponent ?part.\n" +
                 "}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/audi", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"audi/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -60,7 +60,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "    WHERE {\n" +
                 "  ?brand a gs:Brand\n" +
                 "    }";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/genericsupply", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -73,7 +73,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?model gs:hasBrand gs:" + brand + ".\n" +
                 "  ?model a gs:Model.\n" +
                 "}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/genericsupply", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -87,7 +87,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part gs:hasPrice ?price.\n" +
                 "  ?part gs:fitsFor "+ model + ".\n" +
                 "}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/genericsupply", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -99,7 +99,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "WHERE {\n" +
                 "  ?brand <http://www.w3.org/2000/01/rdf-schema#subClassOf> jcp:car.\n" +
                 "}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/joescarparts", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -111,7 +111,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "WHERE {\n" +
                 "  ?model <http://www.w3.org/2000/01/rdf-schema#subClassOf> jcp:"+brand+".\n" +
                 "}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/joescarparts", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
@@ -125,7 +125,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part jcp:belongsTo jcp:"+model+".\n" +
                 "  ?part jcp:hasPrice ?price.\n" +
                 "}";
-        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"/joescarparts", query);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
