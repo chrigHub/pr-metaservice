@@ -24,6 +24,7 @@ public class ConnectionListController {
     private SparqlTriple triple = new SparqlTriple();
 
 
+
     private String brand_choice;
     private String model_choice;
 
