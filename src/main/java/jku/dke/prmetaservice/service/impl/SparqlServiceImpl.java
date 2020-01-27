@@ -5,6 +5,7 @@ import jku.dke.prmetaservice.utils.JenaUtils;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SparqlServiceImpl implements SparqlService {
@@ -12,19 +13,23 @@ public class SparqlServiceImpl implements SparqlService {
     private String endpoint;
 
     @Override
-    public List getAllTriples(String endpoint) {
-        String query = "Select ?a ?b ?c where {?a ?b ?c} limit 10";
+    public List<List<String>> getAllTriples(String endpoint) {
+        String query = "Select ?a ?b ?c where {?a ?b ?c}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(endpoint, query);
         return JenaUtils.convertJenaResultSetToList(queryExecution.execSelect());
     }
 
     @Override
-    public List getBrandsFromAudi() {
-        return null;
+    public List<List<String>> getBrandsFromAudi() {
+        List<List<String>> returnList = new ArrayList<>();
+        List<String> audiList = new ArrayList<>();
+        audiList.add("Audi");
+        returnList.add(audiList);
+        return returnList;
     }
 
     @Override
-    public List getModelsFromAudi() {
+    public List<List<String>> getModelsFromAudi() {
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "\n" +
                 "SELECT ?model ?modelstring\n" +
@@ -37,7 +42,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List getPartsForAudiModel(String model) {
+    public List<List<String>> getPartsForAudiModel(String model) {
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                 "\n" +
@@ -53,8 +58,8 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List getBrandsFromGs() {
-        String query = "    prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
+    public List<List<String>> getBrandsFromGs() {
+        String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
                 "    SELECT ?brand\n" +
                 "    WHERE {\n" +
@@ -65,7 +70,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List getModelsForBrandFromGs(String brand) {
+    public List<List<String>> getModelsForBrandFromGs(String brand) {
         String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
                 "SELECT ?model\n" +
@@ -78,7 +83,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List getPartsForModelFromGs(String model) {
+    public List<List<String>> getPartsForModelFromGs(String model) {
         String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
                 "SELECT DISTINCT ?part ?price\n" +
@@ -92,7 +97,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List getBrandsFromJoe() {
+    public List<List<String>> getBrandsFromJoe() {
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +
                 "SELECT DISTINCT ?brand\n" +
@@ -104,7 +109,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List getModelsForBrandFromJoe(String brand) {
+    public List<List<String>> getModelsForBrandFromJoe(String brand) {
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +
                 "SELECT DISTINCT ?model\n" +
@@ -117,7 +122,7 @@ public class SparqlServiceImpl implements SparqlService {
 
     //Test
     @Override
-    public List getPartsForModelFromJoe(String model) {
+    public List<List<String>> getPartsForModelFromJoe(String model) {
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +
                 "SELECT DISTINCT ?part ?price\n" +

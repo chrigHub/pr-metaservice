@@ -5,17 +5,17 @@ import org.apache.jena.query.ResultSet;
 import java.util.List;
 
 public interface SparqlService {
-    List getAllTriples(String endpoint);
+    List<List<String>> getAllTriples(String endpoint);
 
-    List getBrandsFromAudi();
-    List getModelsFromAudi();
-    List getPartsForAudiModel(String model);
+    List<List<String>> getBrandsFromAudi();
+    List<List<String>> getModelsFromAudi();
+    List<List<String>> getPartsForAudiModel(String model);
 
-    List getBrandsFromJoe();
-    List getModelsForBrandFromJoe(String brand);
-    List getPartsForModelFromJoe(String model);
+    List<List<String>> getBrandsFromJoe();
+    List<List<String>> getModelsForBrandFromJoe(String brand);
+    List<List<String>> getPartsForModelFromJoe(String model);
 
-    List getBrandsFromGs();
-    List getModelsForBrandFromGs(String brand);
-    List getPartsForModelFromGs(String model);
+    List<List<String>> getBrandsFromGs();
+    List<List<String>> getModelsForBrandFromGs(String brand);
+    List<List<String>> getPartsForModelFromGs(String model);
 }
