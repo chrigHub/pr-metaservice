@@ -47,10 +47,10 @@ public class SparqlServiceImpl implements SparqlService {
         log.info("Formulating Query: getModelsFromAudi");
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "\n" +
-                "SELECT ?modelstring\n" +
+                "SELECT ?model\n" +
                 "WHERE {\n" +
-                "  ?model a audi:Model.\n" +
-                "  BIND(strafter(strafter(STR(?model), \"#\"), \"_\") as ?modelstring).\n" +
+                "  ?modeluri a audi:Model.\n" +
+                "  BIND(strafter(strafter(STR(?modeluri), \"#\"), \"_\") as ?model).\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"audi/query", query);
         return runQuery(queryExecution, "audi");
@@ -62,12 +62,11 @@ public class SparqlServiceImpl implements SparqlService {
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                 "\n" +
-                "SELECT ?partstring ?price\n" +
+                "SELECT ?part ?price\n" +
                 "WHERE {\n" +
                 "  ?part a ?category.\n" +
                 "  ?part audi:hasListPrice ?price.\n" +
                 "  ?category rdfs:subClassOf* audi:Part.\n" +
-                "  BIND(strafter(strafter(STR(?part), \"#\"), \"_\") as ?partstring).\n" +
                 "  audi:Audi_" + model + " audi:hasComponent ?part.\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"audi/query", query);
@@ -94,8 +93,9 @@ public class SparqlServiceImpl implements SparqlService {
                 "\n" +
                 "SELECT ?model\n" +
                 "WHERE {\n" +
-                "  ?model gs:hasBrand gs:" + brand + ".\n" +
-                "  ?model a gs:Model.\n" +
+                "  ?modeluri gs:hasBrand gs:" + brand + ".\n" +
+                "  ?modeluri a gs:Model.\n" +
+                "  BIND(strafter(strafter(STR(?modeluri), \"#\"), \"_\") as ?model).\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
         return runQuery(queryExecution, "genericsupply");
