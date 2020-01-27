@@ -49,7 +49,7 @@ public class SparqlServiceImpl implements SparqlService {
     public List<SparqlTriple> findSparepartByFilter(List<FilterPredicate> filters) {
         String queryString = new SparqlQueryBuilder.Builder().withFilter(filters).build();
 
-        return performQeryAndExtractResultSet(queryString);
+        return null; //performQeryAndExtractResultSet(queryString);
     }
 
 }

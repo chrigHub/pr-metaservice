@@ -2,6 +2,9 @@ package jku.dke.prmetaservice.controller;
 
 import jku.dke.prmetaservice.entity.SparqlTriple;
 import jku.dke.prmetaservice.service.impl.SparqlServiceImpl;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.ResultSet;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,11 +37,18 @@ public class IndexController {
 
     @PostMapping("/")
     public String querySubmit(@ModelAttribute SparqlTriple triple){
+        String ds = "audi";
+        String server = "http://localhost:3030//"+ds+"/query";
+        String query = "Select ?a ?b ?c where {?a ?b ?c} limit 10";
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService(server, query);
+        ResultSet result = queryExecution.execSelect();
+        log.info(result.toString());
+        /*
         log.info("Subject: " + triple.getSubject());
         log.info("Predicate: " + triple.getPredicate());
         log.info("Object: " + triple.getObject());
 
-        String endpoint = "http://localhost:4040/rdf/sparql";
+        String endpoint = "http://localhost:303/ds/query";
         String query = "Select ?a ?b ? where {?a ?b ?c} limit 10";
         String format = "format=application/json";
 
@@ -50,6 +60,7 @@ public class IndexController {
         } catch (UnsupportedEncodingException | MalformedURLException e) {
             e.printStackTrace();
         }
+        */
         return "index";
     }
 }
