@@ -1,5 +1,6 @@
 package jku.dke.prmetaservice.service.impl;
 
+import jku.dke.prmetaservice.entity.Result;
 import jku.dke.prmetaservice.service.SparqlService;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -28,7 +29,7 @@ public class SparqlServiceImpl implements SparqlService {
         log.info("Formulating Query: getAllTriples from "+datastore);
         String query = "Select ?a ?b ?c where {?a ?b ?c}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+datastore+"/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, datastore);
     }
 
     @Override
@@ -37,6 +38,7 @@ public class SparqlServiceImpl implements SparqlService {
         List<String> audiList = new ArrayList<>();
         audiList.add("Audi");
         returnList.add(audiList);
+        //TODO
         return returnList;
     }
 
@@ -45,13 +47,13 @@ public class SparqlServiceImpl implements SparqlService {
         log.info("Formulating Query: getModelsFromAudi");
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "\n" +
-                "SELECT ?model\n" +
+                "SELECT ?modelstring\n" +
                 "WHERE {\n" +
-                "  ?modeluri a audi:Model.\n" +
-                "  BIND(strafter(strafter(STR(?modeluri), \"#\"), \"_\") as ?model).\n" +
+                "  ?model a audi:Model.\n" +
+                "  BIND(strafter(strafter(STR(?model), \"#\"), \"_\") as ?modelstring).\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"audi/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "audi");
     }
 
     @Override
@@ -60,16 +62,16 @@ public class SparqlServiceImpl implements SparqlService {
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                 "\n" +
-                "SELECT ?part ?price ?category\n" +
+                "SELECT ?partstring ?price\n" +
                 "WHERE {\n" +
-                "  ?parturi a ?category.\n" +
-                "  ?parturi audi:hasListPrice ?price.\n" +
+                "  ?part a ?category.\n" +
+                "  ?part audi:hasListPrice ?price.\n" +
                 "  ?category rdfs:subClassOf* audi:Part.\n" +
-                "  BIND(strafter(strafter(STR(?parturi), \"#\"), \"_\") as ?part).\n" +
+                "  BIND(strafter(strafter(STR(?part), \"#\"), \"_\") as ?partstring).\n" +
                 "  audi:Audi_" + model + " audi:hasComponent ?part.\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"audi/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "audi");
     }
 
     @Override
@@ -82,7 +84,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?brand a gs:Brand\n" +
                 "    }";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "genericsupply");
     }
 
     @Override
@@ -92,12 +94,11 @@ public class SparqlServiceImpl implements SparqlService {
                 "\n" +
                 "SELECT ?model\n" +
                 "WHERE {\n" +
-                "  ?modeluri gs:hasBrand gs:" + brand + ".\n" +
-                "  ?modeluri a gs:Model.\n" +
-                "  BIND(strafter(strafter(STR(?modeluri), \"#\"), \"_\") as ?model).\n" +
+                "  ?model gs:hasBrand gs:" + brand + ".\n" +
+                "  ?model a gs:Model.\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "genericsupply");
     }
 
     @Override
@@ -112,7 +113,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part gs:fitsFor gs:"+ model+ ".\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "genericsupply");
     }
 
     @Override
@@ -125,7 +126,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?brand <http://www.w3.org/2000/01/rdf-schema#subClassOf> jcp:car.\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "joescarparts");
     }
 
     @Override
@@ -138,7 +139,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?model <http://www.w3.org/2000/01/rdf-schema#subClassOf> jcp:"+brand+".\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "joescarparts");
     }
 
     //Test
@@ -153,31 +154,32 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part jcp:hasPrice ?price.\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
-        return runQuery(queryExecution);
+        return runQuery(queryExecution, "joescarparts");
     }
 
-    private static List<List<String>> runQuery(QueryExecution qe){
+    private static List<List<String>> runQuery(QueryExecution qe, String dataset){
         ResultSet results = qe.execSelect();
-        log.info("Query Engine opened");
+        log.info("Query Engine opened for "+dataset);
         List<String> varList = new ArrayList<String>();
         List<List<String>> resultList = new ArrayList<>();
         varList = results.getResultVars();
         while(results.hasNext()){
             QuerySolution solution = results.nextSolution();
+            Result result = new Result();
             List<String> entry = new ArrayList<String>();
             varList.forEach(var -> {
-                RDFNode a = solution.get(var);
-                if(a.isURIResource()){
-                    entry.add(a.asNode().getLocalName());
-                }else if(a.isLiteral()){
-                    entry.add(a.asLiteral().toString());
+                RDFNode node = solution.get(var);
+                if(node.isLiteral()){
+                    result.map(node.asLiteral().toString(), var);
+                    entry.add(node.asLiteral().toString());
+                }else if(node.isURIResource()){
+                    entry.add(node.asNode().getLocalName());
                 }
-
             });
             resultList.add(entry);
         };
         qe.close();
-        log.info("Query Engine closed");
+        log.info("Query Engine closed for "+dataset);
         return resultList;
     }
 

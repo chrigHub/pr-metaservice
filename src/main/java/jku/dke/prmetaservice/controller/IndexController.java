@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.slf4j.Logger;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
@@ -27,7 +28,6 @@ public class IndexController {
 
     private String brand_choice;
     private String model_choice;
-
 
     @GetMapping("/")
     public String index(Model model){
