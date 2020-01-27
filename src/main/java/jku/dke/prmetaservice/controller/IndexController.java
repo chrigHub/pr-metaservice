@@ -46,7 +46,7 @@ public class IndexController {
         model.addAttribute("sparql_triple", this.triple);
         model.addAttribute("brands", this.brandSet);
         model.addAttribute("brand_choice", this.brand_choice);
-        model.addAttribute("model", this.modelSet);
+        model.addAttribute("models", this.modelSet);
         model.addAttribute("model_choice", this.model_choice);
         log.info(this.brandSet.toString());
         log.info("Entered get index");
@@ -88,11 +88,30 @@ public class IndexController {
 
     @PostMapping("/selectBrand")
     public String selectBrand (@RequestParam(name="brand") String brand, Model model){
+        this.sparqlService.setEndpoint("http://localhost:3030//");
         this.brand_choice = brand;
+
+        if (this.brand_choice != null) {
+            this.sparqlService.getModelsFromAudi().forEach(row -> {
+                row.forEach(entry -> {
+                    this.modelSet.add(entry);
+                });
+            });
+            this.sparqlService.getModelsForBrandFromGs(brand_choice).forEach(row -> {
+                row.forEach(entry -> {
+                    this.modelSet.add(entry);
+                });
+            });
+            this.sparqlService.getModelsForBrandFromJoe(brand_choice).forEach(row -> {
+                row.forEach(entry -> {
+                    this.modelSet.add(entry);
+                });
+            });
+        }
         model.addAttribute("sparql_triple", this.triple);
         model.addAttribute("brands", this.brandSet);
         model.addAttribute("brand_choice", this.brand_choice);
-        model.addAttribute("model", this.modelSet);
+        model.addAttribute("models", this.modelSet);
         model.addAttribute("model_choice", this.model_choice);
         return "index";
     }
@@ -103,7 +122,7 @@ public class IndexController {
         model.addAttribute("sparql_triple", this.triple);
         model.addAttribute("brands", this.brandSet);
         model.addAttribute("brand_choice", this.brand_choice);
-        model.addAttribute("model", this.modelSet);
+        model.addAttribute("models", this.modelSet);
         model.addAttribute("model_choice", this.model_choice);
         return "index";
     }
