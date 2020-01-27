@@ -61,8 +61,8 @@ public class IndexController {
             //Get all?
         }else if(this.brand_choice.equals("Audi")){
             listsToCombine.add(sparqlService.getPartsForAudiModel(this.model_choice));
-            listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice + "_" + this.model_choice));
-            listsToCombine.add(sparqlService.getModelsForBrandFromJoe(this.model_choice));
+            listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice));
+            listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
             this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
         }else{
             listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
