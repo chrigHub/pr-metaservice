@@ -21,24 +21,7 @@
 </div>
 <div class="container-fluid mt-5">
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <span data-feather="file"></span>
-                            Data Table
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <span data-feather="file"></span>
-                            Connections
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div th:insert="sidebar :: header">...</div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -48,6 +31,7 @@
 
 
             <h3>Connection List</h3>
+            <h6>The following table lists all data sources queried by this Meta Service.</h6>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
