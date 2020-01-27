@@ -34,7 +34,6 @@ WHERE {
   ?part a gs:Product.
   ?part gs:hasPrice ?price.
   ?part gs:fitsFor ?model.
-  ?model gs:hasBrand gs:Audi.
 }
 ```
 
@@ -110,9 +109,10 @@ WHERE {
 prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?part ?partstring ?category
+SELECT ?partstring ?price ?category
 WHERE {
   ?part a ?category.
+  ?part audi:hasListPrice ?price.
   ?category rdfs:subClassOf* audi:Part.
   BIND(strafter(strafter(STR(?part), "#"), "_") as ?partstring).
   audi:Audi_A4 audi:hasComponent ?part.
