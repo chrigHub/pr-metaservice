@@ -40,28 +40,26 @@ public class IndexController {
             this.brandSet = HelperUtils.combineResultListsToEntries(listsToCombine);
         }
 
-        model.addAttribute("brands", this.brandSet);
-        model.addAttribute("models", this.modelSet);
-        model.addAttribute("brand_choice", this.brand_choice);
-        model.addAttribute("model_choice", this.model_choice);
+        this.updateModel(model);
         return "index";
     }
 
     @GetMapping("test")
     public String testConnection(Model model){
+        this.resultSet.clear();
         List<List<List<String>>> listsToCombine = new ArrayList<>();
         listsToCombine.add(sparqlService.getAllTriples("audi"));
         listsToCombine.add(sparqlService.getAllTriples("genericsupply"));
         listsToCombine.add(sparqlService.getAllTriples("joescarparts"));
         this.resultSet = HelperUtils.combineResultListsToRows(listsToCombine);
-        model.addAttribute("resultList", this.resultSet);
+        this.updateModel(model);
         return "index";
     }
 
     @GetMapping("/search")
     public String searchDB(Model model){
-        this.resultList = null;
-        this.resultSet = null;
+        this.resultList.clear();
+        this.resultSet.clear();
         List<List<List<String>>> listsToCombine = new ArrayList<>();
         if(this.brand_choice == null || this.model_choice == null){
             //TODO
@@ -77,7 +75,7 @@ public class IndexController {
             this.resultSet = HelperUtils.combineResultListsToRows(listsToCombine);
         }
 
-        model.addAttribute("resultList", this.resultSet);
+        this.updateModel(model);
         return "index";
     }
 
@@ -98,22 +96,25 @@ public class IndexController {
             }
             this.modelSet = HelperUtils.combineResultListsToEntries(listsToCombine);
         }
-
-        model.addAttribute("brands", this.brandSet);
-        model.addAttribute("brand_choice", this.brand_choice);
-        model.addAttribute("models", this.modelSet);
-        model.addAttribute("model_choice", this.model_choice);
+        log.info("Selected Brand: "+this.brand_choice);
+        this.updateModel(model);
         return "index";
     }
 
     @PostMapping("/selectModel")
     public String selectModel (@RequestParam(name="model") String carModel, Model model){
         this.model_choice = carModel;
+        log.info("Selected Model: "+this.model_choice);
+        this.updateModel(model);
+        return "index";
+    }
+
+    private void updateModel(Model model){
         model.addAttribute("brands", this.brandSet);
         model.addAttribute("brand_choice", this.brand_choice);
         model.addAttribute("models", this.modelSet);
         model.addAttribute("model_choice", this.model_choice);
-        return "index";
+        model.addAttribute("resultList", this.resultSet);
     }
 
 }
