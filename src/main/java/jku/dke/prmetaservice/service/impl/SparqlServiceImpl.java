@@ -153,7 +153,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "WHERE {\n" +
                 "  ?part jcp:belongsTo jcp:"+model+".\n" +
                 "  ?part jcp:hasPrice ?pricenr.\n" +
-                "  Bind(STR(?pricenr) as ?price).\n" +
+                "  Bind(strbefore(STR(?pricenr), \"e\") as ?price).\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
         return runQuery(queryExecution, "joescarparts");
