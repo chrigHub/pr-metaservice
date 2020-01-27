@@ -88,7 +88,6 @@ public class IndexController {
             listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
             this.resultSet = JenaUtils.combineResultListsToRows(listsToCombine);
         }
-        model.add
         this.resultList = sparqlService.getPartsForModelFromGs(null);
         return "index";
     }
