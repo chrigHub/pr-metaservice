@@ -86,43 +86,6 @@ WHERE {
 }
 ```
 
-# GenericSupply
-
-## Abfrage der Automarken
-
-```sparql
-prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>
-
-SELECT ?brand
-WHERE {
-  ?brand a gs:Brand
-}
-```
-
-## Abfrage der Modelle pro Marke
-```sparql
-prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>
-
-SELECT ?model
-WHERE {
-  ?model gs:hasBrand gs:Audi.
-  ?model a gs:Model.
-}
-```
-
-## Abfrage der Teile pro Modell inkl. Preise
-```sparql
-prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>
-
-SELECT DISTINCT ?part ?price
-WHERE {
-  ?part a gs:Product.
-  ?part gs:hasPrice ?price.
-  ?part gs:fitsFor ?model.
-  ?model gs:hasBrand gs:Audi.
-}
-```
-
 # Audi
 
 ## Abfrage der Automarken
@@ -152,5 +115,6 @@ WHERE {
   ?part a ?category.
   ?category rdfs:subClassOf* audi:Part.
   BIND(strafter(strafter(STR(?part), "#"), "_") as ?partstring).
+  audi:Audi_A4 audi:hasComponent ?part.
 }
 ```
