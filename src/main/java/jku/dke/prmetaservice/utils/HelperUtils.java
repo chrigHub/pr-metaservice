@@ -1,5 +1,6 @@
 package jku.dke.prmetaservice.utils;
 
+import jku.dke.prmetaservice.entity.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,23 +11,31 @@ import java.util.Set;
 public class HelperUtils {
     private static final Logger log = LoggerFactory.getLogger(HelperUtils.class);
 
-    public static Set<String> combineResultListsToEntries(List<List<List<String>>> resultLists){
+    public static Set<String> combineResultListsForBrand(List<List<Result>> resultLists){
         Set<String> combinedSet = new HashSet<>();
         resultLists.forEach(singleList -> {
-            singleList.forEach(row -> {
-                row.forEach(entry -> {
-                    combinedSet.add(entry);
-                });
+            singleList.forEach(result -> {
+                combinedSet.add(result.getBrand());
             });
         });
         return combinedSet;
     }
 
-    public static Set<List<String>> combineResultListsToRows(List<List<List<String>>> resultLists){
-        Set<List<String>> combinedSet = new HashSet<>();
+    public static Set<String> combineResultListsForModel(List<List<Result>> resultLists){
+        Set<String> combinedSet = new HashSet<>();
         resultLists.forEach(singleList -> {
-            singleList.forEach(row -> {
-                combinedSet.add(row);
+            singleList.forEach(result -> {
+                combinedSet.add(result.getModel());
+            });
+        });
+        return combinedSet;
+    }
+
+    public static Set<Result> combineResultListsToRows(List<List<Result>> resultLists){
+        Set<Result> combinedSet = new HashSet<>();
+        resultLists.forEach(singleList -> {
+            singleList.forEach(result -> {
+                combinedSet.add(result);
             });
         });
         return combinedSet;

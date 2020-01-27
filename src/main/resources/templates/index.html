@@ -74,8 +74,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="results : ${resultList}">
-                            <td th:each="result : ${results}" th:text="${#strings.replace(result,'_',' ')}"></td>
+                        <tr th:each="result : ${resultList}">
+                            <td th:text="${result.getDataset()}"></td>
+                            <td th:text="${#strings.replace(result.getPart(),'_',' ')}"></td>
+                            <td th:text="${result.getPrice()}"></td>
                         </tr>
                     </tbody>
                 </table>

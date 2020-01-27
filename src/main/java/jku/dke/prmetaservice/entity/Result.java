@@ -4,17 +4,39 @@ public class Result {
     private String dataset;
     private String part;
     private String price;
+    private String brand;
+    private String model;
 
-    public Result(String dataset, String part, String price) {
+    public Result(String dataset, String part, String price, String brand, String model) {
         this.dataset = dataset;
         this.part = part;
         this.price = price;
+        this.brand = brand;
+        this.model = model;
     }
 
     public Result() {
         this.dataset = null;
         this.part = null;
         this.price = null;
+        this.brand = null;
+        this.model = null;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getDataset() {
@@ -48,6 +70,12 @@ public class Result {
                 break;
             case "part":
                 this.setPart(val);
+                break;
+            case "model":
+                this.setModel(val);
+                break;
+            case "brand":
+                this.setBrand(val);
                 break;
         }
     }

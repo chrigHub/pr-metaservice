@@ -25,7 +25,7 @@ public class SparqlServiceImpl implements SparqlService {
 
 
     @Override
-    public List<List<String>> getAllTriples(String datastore) {
+    public List<Result> getAllTriples(String datastore) {
         log.info("Formulating Query: getAllTriples from "+datastore);
         String query = "Select ?a ?b ?c where {?a ?b ?c}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+datastore+"/query", query);
@@ -33,17 +33,16 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<List<String>> getBrandsFromAudi() {
-        List<List<String>> returnList = new ArrayList<>();
-        List<String> audiList = new ArrayList<>();
-        audiList.add("Audi");
-        returnList.add(audiList);
-        //TODO
+    public List<Result> getBrandsFromAudi() {
+        List<Result> returnList = new ArrayList<>();
+        Result result = new Result();
+        result.setBrand("Audi");
+        returnList.add(result);
         return returnList;
     }
 
     @Override
-    public List<List<String>> getModelsFromAudi() {
+    public List<Result> getModelsFromAudi() {
         log.info("Formulating Query: getModelsFromAudi");
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "\n" +
@@ -57,7 +56,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<List<String>> getPartsForAudiModel(String model) {
+    public List<Result> getPartsForAudiModel(String model) {
         log.info("Formulating Query: getPartsForAudiModel");
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
@@ -75,7 +74,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<List<String>> getBrandsFromGs() {
+    public List<Result> getBrandsFromGs() {
         log.info("Formulating Query: getBrandsFromGs");
         String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
@@ -88,7 +87,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<List<String>> getModelsForBrandFromGs(String brand) {
+    public List<Result> getModelsForBrandFromGs(String brand) {
         log.info("Formulating Query: getModelsForBrandFromGs");
         String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
@@ -103,7 +102,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<List<String>> getPartsForModelFromGs(String model) {
+    public List<Result> getPartsForModelFromGs(String model) {
         log.info("Formulating Query: getPartsForModelFromGs");
         String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
@@ -119,7 +118,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<List<String>> getBrandsFromJoe() {
+    public List<Result> getBrandsFromJoe() {
         log.info("Formulating Query: getBrandsFromJoe");
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +
@@ -132,7 +131,7 @@ public class SparqlServiceImpl implements SparqlService {
     }
 
     @Override
-    public List<List<String>> getModelsForBrandFromJoe(String brand) {
+    public List<Result> getModelsForBrandFromJoe(String brand) {
         log.info("Formulating Query: getModelsForBrandFromJoe");
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +
@@ -146,7 +145,7 @@ public class SparqlServiceImpl implements SparqlService {
 
     //Test
     @Override
-    public List<List<String>> getPartsForModelFromJoe(String model) {
+    public List<Result> getPartsForModelFromJoe(String model) {
         log.info("Formulating Query: getPartsForModelFromJoe");
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +
@@ -160,26 +159,24 @@ public class SparqlServiceImpl implements SparqlService {
         return runQuery(queryExecution, "joescarparts");
     }
 
-    private static List<List<String>> runQuery(QueryExecution qe, String dataset){
+    private static List<Result> runQuery(QueryExecution qe, String dataset){
         ResultSet results = qe.execSelect();
         log.info("Query Engine opened for "+dataset);
-        List<String> varList = new ArrayList<String>();
-        List<List<String>> resultList = new ArrayList<>();
+        List<String> varList = new ArrayList<>();
+        List<Result> resultList = new ArrayList<>();
         varList = results.getResultVars();
         while(results.hasNext()){
             QuerySolution solution = results.nextSolution();
             Result result = new Result();
-            List<String> entry = new ArrayList<String>();
             varList.forEach(var -> {
                 RDFNode node = solution.get(var);
                 if(node.isLiteral()){
                     result.map(node.asLiteral().toString(), var);
-                    entry.add(node.asLiteral().toString());
                 }else if(node.isURIResource()){
-                    entry.add(node.asNode().getLocalName());
+                    result.map(node.asNode().getLocalName(),var);
                 }
             });
-            resultList.add(entry);
+            resultList.add(result);
         };
         qe.close();
         log.info("Query Engine closed for "+dataset);
