@@ -1,6 +1,7 @@
 package jku.dke.prmetaservice.controller;
 
 import com.github.andrewoma.dexx.collection.internal.redblack.Tree;
+import jku.dke.prmetaservice.entity.Order;
 import jku.dke.prmetaservice.entity.Result;
 import jku.dke.prmetaservice.service.impl.SparqlServiceImpl;
 import jku.dke.prmetaservice.utils.HelperUtils;
@@ -16,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+
 @Controller
 public class IndexController {
     private static final String ENDPOINT = "http://localhost:3030//";
@@ -26,6 +32,7 @@ public class IndexController {
     private Set<String> modelSet = new HashSet<>();
     private Set<Result> resultSet = new TreeSet<>();
     private List<Result> resultList = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     private String brand_choice;
     private String model_choice;
@@ -175,8 +182,11 @@ public class IndexController {
     }
 
     @GetMapping("/confirm_order")
-    public String placeOrder(Model model, @RequestParam(name="part") String part, @RequestParam(name="price") double price, @RequestParam(name="fName") String fName, @RequestParam(name="lName") String lName, @RequestParam(name="zip") String zip, @RequestParam(name="city") String city, @RequestParam(name="address") String address) {
+    public String placeOrder(Model model, @RequestParam(name="part") String part, @RequestParam(name="price") double price, @RequestParam(name="supplier") String supplier, @RequestParam(name="fName") String fName, @RequestParam(name="lName") String lName, @RequestParam(name="zip") String zip, @RequestParam(name="city") String city, @RequestParam(name="address") String address) {
         this.updateModel(model);
+        Order new_order = new Order(part, supplier, price, fName, lName, address, zip, city);
+        this.orders.add(new_order);
+        //this.SendMail("chrigro96@gmx.at", "Your Order of " + part + "at a price of " + price + " was confirmed!");
         model.addAttribute("part", part);
         model.addAttribute("price", price);
         model.addAttribute("fName", fName);
@@ -185,6 +195,62 @@ public class IndexController {
         model.addAttribute("city", city);
         model.addAttribute("zip", zip);
         return ("order_confirmed");
+    }
+
+    private void SendMail(String recipient, String mail_text) {
+        // Recipient's email ID needs to be mentioned.
+        String to = recipient;
+
+        // Sender's email ID needs to be mentioned
+        String from = "felix.winterleitner@gmail.com";
+
+        // Assuming you are sending email from localhost
+        String host = "smtp.gmail.com";
+
+        // Get system properties
+        Properties properties = System.getProperties();
+
+        // Setup mail server
+
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+
+        // Get the Session object.// and pass username and password
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+
+                return new PasswordAuthentication("felix.winterleitner@gmail.com", "*******");
+
+            }
+
+        });
+
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+            // Set Subject: header field
+            message.setSubject("Order Confirmed!");
+
+            // Now set the actual message
+            message.setText(mail_text);
+
+            System.out.println("sending...");
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
     }
 
 }
