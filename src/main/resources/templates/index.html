@@ -90,9 +90,10 @@
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
-                            <th> Dataset </th>
+                            <th> Supplier </th>
                             <th> Sparepart </th>
                             <th> Price </th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,6 +101,7 @@
                             <td th:text="${result.getDataset()}"></td>
                             <td th:text="${#strings.replace(result.getPart(),'_',' ')}"></td>
                             <td th:text="${result.getPrice()}"></td>
+                            <td><a class="btn btn-success" th:href="'/order?part=' + ${result.getPart()} + '&price=' + ${result.getPrice()} + '&dataset=' + ${result.getDataset()}">Order</a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -62,6 +62,9 @@ public class SparqlServiceImpl implements SparqlService {
 
     public List<Result> getPartsForAudiModel(String model, int minVal, int maxVal) {
         if (minVal < 0) minVal = 0;
+        if (maxVal < minVal) {
+            maxVal = Integer.MAX_VALUE;
+        }
         log.info("Formulating Query: getPartsForAudiModel");
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
@@ -114,6 +117,9 @@ public class SparqlServiceImpl implements SparqlService {
 
     public List<Result> getPartsForModelFromGs(String model, int minVal, int maxVal) {
         if (minVal < 0) minVal = 0;
+        if (maxVal < minVal) {
+            maxVal = Integer.MAX_VALUE;
+        }
         log.info("Formulating Query: getPartsForModelFromGs");
         String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
@@ -162,6 +168,9 @@ public class SparqlServiceImpl implements SparqlService {
 
     public List<Result> getPartsForModelFromJoe(String model, int minVal, int maxVal) {
         if (minVal < 0) minVal = 0;
+        if (maxVal < minVal) {
+            maxVal = Integer.MAX_VALUE;
+        }
         log.info("Formulating Query: getPartsForModelFromJoe");
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +

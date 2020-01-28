@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DKE_Webservice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow mb-2">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" th:href="@{/}">DKE-Webservice</a>
+</div>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div th:insert="sidebar :: header">...</div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h2 class="h2">Car Parts Metaservice</h2>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                    </div>
+                </div>
+            </div>
+            <div th:text="'Your order of *' + ${#strings.replace(part,'_',' ')} + '* at a price of ' + ${price} + '€ was placed and will be shipped to ' + ${fName} + ' ' + ${lName} + ', ' + ${address} + ', ' + ${zip} + ' ' + ${city} + '!'"/>
+            <a class="btn btn-success" href="/">Go Back.</a>
+        </main>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -53,32 +53,27 @@ public class IndexController {
     public String searchDB(Model model){
         this.resultList.clear();
         this.resultSet.clear();
+        int minFilter; int maxFilter;
+        if (this.min_filter == null) minFilter = 0;
+        else minFilter = this.min_filter;
+        if (this.max_filter == null) maxFilter = Integer.MAX_VALUE;
+        else maxFilter = this.max_filter;
+
         List<List<Result>> listsToCombine = new ArrayList<>();
         if(this.brand_choice == null || this.model_choice == null){
             log.info("No brand and model entered. No effect");
-        }else if(this.brand_choice.equals("Audi")){
-            if(this.min_filter != null && this.max_filter != null){
-                listsToCombine.add(sparqlService.getPartsForAudiModel(this.model_choice, this.min_filter, this.max_filter));
-                listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice, this.min_filter, this.max_filter));
-                listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice, this.min_filter, this.max_filter));
-
-            }else{
-                listsToCombine.add(sparqlService.getPartsForAudiModel(this.model_choice));
-                listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice));
-                listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
-            }
+        }
+        else if(this.brand_choice.equals("Audi")){
+            listsToCombine.add(sparqlService.getPartsForAudiModel(this.model_choice, minFilter, maxFilter));
+            listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice, minFilter, maxFilter));
+            listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice, minFilter, maxFilter));
             this.resultList = HelperUtils.combineResultListsToRows(listsToCombine);
             this.resultList.forEach(result -> {
                 this.resultSet.add(result);
             });
         }else{
-            if(this.min_filter != null && this.max_filter != null) {
-                listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice, this.min_filter, this.max_filter));
-                listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice, this.min_filter, this.max_filter));
-            }else{
-                listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
-                listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice + "_" + this.model_choice));
-            }
+            listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice, minFilter, maxFilter));
+            listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice, minFilter, maxFilter));
             this.resultList = HelperUtils.combineResultListsToRows(listsToCombine);
             this.resultList.forEach(result -> {
                 this.resultSet.add(result);
@@ -121,6 +116,10 @@ public class IndexController {
 
     @PostMapping("/selectMinFilter")
     public String selectMinFilter(@RequestParam(name="minFilter") Integer minFilter, Model model){
+        if(minFilter == null) {
+            updateModel(model);
+            return "index";
+        }
         if(this.max_filter == null || minFilter < max_filter){
             this.min_filter = minFilter;
             log.info("Selected min-price: "+this.min_filter);
@@ -131,6 +130,10 @@ public class IndexController {
 
     @PostMapping("/selectMaxFilter")
     public String selectMaxFilter(@RequestParam(name="maxFilter") Integer maxFilter, Model model){
+        if (maxFilter == null){
+            updateModel(model);
+            return "index";
+        }
         if(this.min_filter == null || maxFilter > this.min_filter){
             this.max_filter = maxFilter;
             log.info("Selected max-price: "+this.max_filter);
@@ -160,6 +163,28 @@ public class IndexController {
         model.addAttribute("resultList", this.resultSet);
         model.addAttribute("min_filter", this.min_filter);
         model.addAttribute("max_filter", this.max_filter);
+    }
+
+    @GetMapping("/order")
+    public String placeOrder(Model model, @RequestParam(name="part") String part, @RequestParam(name="price") double price, @RequestParam(name="dataset") String dataset) {
+        this.updateModel(model);
+        model.addAttribute("part", part);
+        model.addAttribute("price", price);
+        model.addAttribute("dataset", dataset);
+        return ("order");
+    }
+
+    @GetMapping("/confirm_order")
+    public String placeOrder(Model model, @RequestParam(name="part") String part, @RequestParam(name="price") double price, @RequestParam(name="fName") String fName, @RequestParam(name="lName") String lName, @RequestParam(name="zip") String zip, @RequestParam(name="city") String city, @RequestParam(name="address") String address) {
+        this.updateModel(model);
+        model.addAttribute("part", part);
+        model.addAttribute("price", price);
+        model.addAttribute("fName", fName);
+        model.addAttribute("lName", lName);
+        model.addAttribute("address", address);
+        model.addAttribute("city", city);
+        model.addAttribute("zip", zip);
+        return ("order_confirmed");
     }
 
 }
