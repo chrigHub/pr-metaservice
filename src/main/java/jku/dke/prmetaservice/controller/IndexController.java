@@ -4,7 +4,9 @@ import com.github.andrewoma.dexx.collection.internal.redblack.Tree;
 import jku.dke.prmetaservice.entity.Order;
 import jku.dke.prmetaservice.entity.Result;
 import jku.dke.prmetaservice.service.impl.SparqlServiceImpl;
+import jku.dke.prmetaservice.utils.GmailSender;
 import jku.dke.prmetaservice.utils.HelperUtils;
+import org.apache.jena.shacl.lib.G;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -186,7 +188,8 @@ public class IndexController {
         this.updateModel(model);
         Order new_order = new Order(part, supplier, price, fName, lName, address, zip, city);
         this.orders.add(new_order);
-        this.SendMail(mail, "Your Order of " + part.replace("_", " ") + "at a price of " + price + "€ was confirmed!");
+        GmailSender mailer = new GmailSender("carpartsmetaservice@gmail.com", "CarPartsMetaService1");
+        mailer.sendMail(mail, "Order Confirmed!", "Dear " + fName + "!\n\nYour Order of \"" + part.replace("_", " ") + "\" at a price of " + price + "€ was confirmed!\n\nThis is a demo message.");
         model.addAttribute("part", part);
         model.addAttribute("price", price);
         model.addAttribute("fName", fName);
@@ -195,61 +198,6 @@ public class IndexController {
         model.addAttribute("city", city);
         model.addAttribute("zip", zip);
         return ("order_confirmed");
-    }
-
-    private void SendMail(String recipient, String mail_text) {
-        // Recipient's email ID needs to be mentioned.
-        String to = recipient;
-
-        // Sender's email ID needs to be mentioned
-        String from = "felix.winterleitner@gmail.com";
-
-        // Assuming you are sending email from localhost
-        String host = "smtp.gmail.com";
-        String pass = "*********";
-
-        // Get system properties
-        Properties properties = System.getProperties();
-
-        // Setup mail server
-
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-
-        properties.put("mail.smtp.user", from);
-        properties.put("mail.smtp.password", pass);
-
-        // Get the Session object.// and pass username and password
-        Session session = Session.getDefaultInstance(properties);
-
-        try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
-
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-            // Set Subject: header field
-            message.setSubject("Order Confirmed!");
-
-            // Now set the actual message
-            message.setText(mail_text);
-
-            System.out.println("sending...");
-            // Send message
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-        }
     }
 
 }
