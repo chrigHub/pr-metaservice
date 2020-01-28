@@ -57,6 +57,11 @@ public class SparqlServiceImpl implements SparqlService {
 
     @Override
     public List<Result> getPartsForAudiModel(String model) {
+        return getPartsForAudiModel(model, 0, Integer.MAX_VALUE);
+    }
+
+    public List<Result> getPartsForAudiModel(String model, int minVal, int maxVal) {
+        if (minVal < 0) minVal = 0;
         log.info("Formulating Query: getPartsForAudiModel");
         String query = "prefix audi: <http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#>\n" +
                 "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
@@ -68,6 +73,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  Bind(STR(?pricenr) as ?price).\n" +
                 "  ?category rdfs:subClassOf* audi:Part.\n" +
                 "  audi:Audi_" + model + " audi:hasComponent ?part.\n" +
+                "  FILTER(?pricenr < " + maxVal + " && ?pricenr > " + minVal + ").\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"audi/query", query);
         return runQuery(queryExecution, "audi");
@@ -103,6 +109,11 @@ public class SparqlServiceImpl implements SparqlService {
 
     @Override
     public List<Result> getPartsForModelFromGs(String model) {
+        return getPartsForModelFromGs(model, 0, Integer.MAX_VALUE);
+    }
+
+    public List<Result> getPartsForModelFromGs(String model, int minVal, int maxVal) {
+        if (minVal < 0) minVal = 0;
         log.info("Formulating Query: getPartsForModelFromGs");
         String query = "prefix gs: <http://www.jku.at/dke/praktikumdke/gruppe6/ersatzteilhersteller1#>\n" +
                 "\n" +
@@ -112,6 +123,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part gs:hasPrice ?pricenr.\n" +
                 "  Bind(STR(?pricenr) as ?price).\n" +
                 "  ?part gs:fitsFor gs:"+ model+ ".\n" +
+                "  FILTER(?pricenr < " + maxVal + " && ?pricenr > " + minVal + ").\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"genericsupply/query", query);
         return runQuery(queryExecution, "genericsupply");
@@ -143,9 +155,13 @@ public class SparqlServiceImpl implements SparqlService {
         return runQuery(queryExecution, "joescarparts");
     }
 
-    //Test
     @Override
     public List<Result> getPartsForModelFromJoe(String model) {
+        return getPartsForModelFromJoe(model, 0, Integer.MAX_VALUE);
+    }
+    //Test
+    public List<Result> getPartsForModelFromJoe(String model, int minVal, int maxVal) {
+        if (minVal < 0) minVal = 0;
         log.info("Formulating Query: getPartsForModelFromJoe");
         String query = "prefix jcp: <http://www.semanticweb.org/johannes/ontologies/2019/9/untitled-ontology-9#>\n" +
                 "\n" +
@@ -154,6 +170,7 @@ public class SparqlServiceImpl implements SparqlService {
                 "  ?part jcp:belongsTo jcp:"+model+".\n" +
                 "  ?part jcp:hasPrice ?pricenr.\n" +
                 "  Bind(strbefore(STR(?pricenr), \"e\") as ?price).\n" +
+                "  FILTER(?pricenr < " + maxVal + " && ?pricenr > " + minVal + ").\n" +
                 "}";
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(this.endpoint+"joescarparts/query", query);
         return runQuery(queryExecution, "joescarparts");
