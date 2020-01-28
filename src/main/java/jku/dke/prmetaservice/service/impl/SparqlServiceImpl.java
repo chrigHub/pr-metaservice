@@ -188,7 +188,11 @@ public class SparqlServiceImpl implements SparqlService {
             varList.forEach(var -> {
                 RDFNode node = solution.get(var);
                 if(node.isLiteral()){
-                    result.map(node.asLiteral().toString(), var);
+                    if(var.equals("price")){
+                        result.map(node.asLiteral().getDouble(), var);
+                    }else{
+                        result.map(node.asLiteral().toString(), var);
+                    }
                 }else if(node.isURIResource()){
                     result.map(node.asNode().getLocalName(),var);
                 }
@@ -199,8 +203,6 @@ public class SparqlServiceImpl implements SparqlService {
         log.info("Query Engine closed for "+dataset);
         return resultList;
     }
-
-
 
     public String getEndpoint() {
         return endpoint;

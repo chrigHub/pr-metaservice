@@ -3,11 +3,11 @@ package jku.dke.prmetaservice.entity;
 public class Result {
     private String dataset;
     private String part;
-    private String price;
+    private Double price;
     private String brand;
     private String model;
 
-    public Result(String dataset, String part, String price, String brand, String model) {
+    public Result(String dataset, String part, Double price, String brand, String model) {
         this.dataset = dataset;
         this.part = part;
         this.price = price;
@@ -55,19 +55,17 @@ public class Result {
         this.part = part;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
+
     public void map(String val, String key){
         switch(key){
-            case "price":
-                this.setPrice(val);
-                break;
             case "part":
                 this.setPart(val);
                 break;
@@ -76,6 +74,14 @@ public class Result {
                 break;
             case "brand":
                 this.setBrand(val);
+                break;
+        }
+    }
+
+    public void map(Double val, String key){
+        switch(key){
+            case "price":
+                this.setPrice(val);
                 break;
         }
     }
