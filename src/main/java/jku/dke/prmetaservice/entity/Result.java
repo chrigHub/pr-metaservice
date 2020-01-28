@@ -88,6 +88,7 @@ public class Result implements Comparable<Result>{
 
     @Override
     public int compareTo(Result o) {
-       return this.part.compareTo(o.getPart());
+        if(o == null) return -1;
+        return this.part.compareTo(o.getPart());
     }
 }
