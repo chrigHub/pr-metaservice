@@ -1,6 +1,6 @@
 package jku.dke.prmetaservice.entity;
 
-public class Result{
+public class Result implements Comparable<Result>{
     private String dataset;
     private String part;
     private Double price;
@@ -84,5 +84,10 @@ public class Result{
                 this.setPrice(val);
                 break;
         }
+    }
+
+    @Override
+    public int compareTo(Result o) {
+       return this.part.compareTo(o.getPart());
     }
 }

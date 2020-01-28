@@ -4,6 +4,7 @@ import jku.dke.prmetaservice.entity.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,14 +32,14 @@ public class HelperUtils {
         return combinedSet;
     }
 
-    public static Set<Result> combineResultListsToRows(List<List<Result>> resultLists){
-        Set<Result> combinedSet = new HashSet<>();
+    public static List<Result> combineResultListsToRows(List<List<Result>> resultLists){
+        List<Result> combinedList = new ArrayList<>();
         resultLists.forEach(singleList -> {
             singleList.forEach(result -> {
-                combinedSet.add(result);
+                combinedList.add(result);
             });
         });
-        return combinedSet;
+        return combinedList;
     }
 
 

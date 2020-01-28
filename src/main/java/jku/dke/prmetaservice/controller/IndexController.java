@@ -1,5 +1,6 @@
 package jku.dke.prmetaservice.controller;
 
+import com.github.andrewoma.dexx.collection.internal.redblack.Tree;
 import jku.dke.prmetaservice.entity.Result;
 import jku.dke.prmetaservice.service.impl.SparqlServiceImpl;
 import jku.dke.prmetaservice.utils.HelperUtils;
@@ -23,9 +24,8 @@ public class IndexController {
     private HelperUtils util = new HelperUtils();
     private Set<String> brandSet = new HashSet<>();
     private Set<String> modelSet = new HashSet<>();
-    private Set<Result> resultSet = new HashSet<>();
+    private Set<Result> resultSet = new TreeSet<>();
     private List<Result> resultList = new ArrayList<>();
-
 
     private String brand_choice;
     private String model_choice;
@@ -67,7 +67,10 @@ public class IndexController {
                 listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice));
                 listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
             }
-            this.resultSet = HelperUtils.combineResultListsToRows(listsToCombine);
+            this.resultList = HelperUtils.combineResultListsToRows(listsToCombine);
+            this.resultList.forEach(result -> {
+                this.resultSet.add(result);
+            });
         }else{
             if(this.min_filter != null && this.max_filter != null) {
                 listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice +"_" + this.model_choice, this.min_filter, this.max_filter));
@@ -76,7 +79,10 @@ public class IndexController {
                 listsToCombine.add(sparqlService.getPartsForModelFromJoe(this.model_choice));
                 listsToCombine.add(sparqlService.getPartsForModelFromGs(brand_choice + "_" + this.model_choice));
             }
-            this.resultSet = HelperUtils.combineResultListsToRows(listsToCombine);
+            this.resultList = HelperUtils.combineResultListsToRows(listsToCombine);
+            this.resultList.forEach(result -> {
+                this.resultSet.add(result);
+            });
         }
 
         this.updateModel(model);
