@@ -159,7 +159,7 @@ public class SparqlServiceImpl implements SparqlService {
     public List<Result> getPartsForModelFromJoe(String model) {
         return getPartsForModelFromJoe(model, 0, Integer.MAX_VALUE);
     }
-    //Test
+
     public List<Result> getPartsForModelFromJoe(String model, int minVal, int maxVal) {
         if (minVal < 0) minVal = 0;
         log.info("Formulating Query: getPartsForModelFromJoe");
@@ -185,6 +185,7 @@ public class SparqlServiceImpl implements SparqlService {
         while(results.hasNext()){
             QuerySolution solution = results.nextSolution();
             Result result = new Result();
+            result.setDataset(dataset);
             varList.forEach(var -> {
                 RDFNode node = solution.get(var);
                 if(node.isLiteral()){

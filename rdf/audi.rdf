@@ -1,0 +1,1149 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#"
+     xml:base="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasComponent -->
+
+    <owl:ObjectProperty rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasComponent">
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <rdfs:range rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#usesMaterial -->
+
+    <owl:ObjectProperty rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#usesMaterial">
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+        <rdfs:range rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasAvailableAmout -->
+
+    <owl:DatatypeProperty rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasAvailableAmout">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasListPrice -->
+
+    <owl:DatatypeProperty rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasListPrice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasMinimumDeliveryTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#hasMinimumDeliveryTime">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#isHazardous -->
+
+    <owl:DatatypeProperty rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#isHazardous">
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#isVersion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#isVersion">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Bumper -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Bumper">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Button -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Button">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#InteriorComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Clutch -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Clutch">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Door -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Door">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Engine -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Engine">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Exhaust -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Exhaust">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Headlight -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Headlight">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hood -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hood">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Infotainmentsystem -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Infotainmentsystem">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#InteriorComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#InteriorComponent -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#InteriorComponent">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Part"/>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Seat -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Seat">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#InteriorComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Steeringwheel -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Steeringwheel">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#InteriorComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Taillight -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Taillight">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Transmission -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Transmission">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#FunctionalComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Trunk -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Trunk">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Windshield -->
+
+    <owl:Class rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Windshield">
+        <rdfs:subClassOf rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#BodyComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A1">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Small_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">41459</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A3">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">510</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">33579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A4">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">424</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">39479</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A5">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">59999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A6">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">69999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A7">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">79999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_A8">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Extra_Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">81579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q2">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">31579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q3">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">89</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q5">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">78</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">46579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q7">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">140</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">66579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_Q8">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Extra_Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85549</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_R8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_R8">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">189999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS3">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">48579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS4">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">55579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS5">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">109999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS6">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">119999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS7">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">139999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS_Q3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS_Q3">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS_Q8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_RS_Q8">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Extra_Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">185579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S1">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Small_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">255</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">28579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S3">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S4">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">27</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">61579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S5">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">79999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S6">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">89999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S7">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99999</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_S8">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Extra_Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ2">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">41579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ5">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ7">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">49579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Audi_SQ8">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Model"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Extra_Large_Windshield"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat"/>
+        <hasComponent rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">105579</hasListPrice>
+        <isVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</isVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Extra_Large_Windshield -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Extra_Large_Windshield">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Windshield"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Glass"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1199.00</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric_Seat -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric_Seat">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Seat"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fabric"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">800</hasListPrice>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Normal">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">850</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Left_Sport">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1850</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Normal">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">850</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender_Right_Sport">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Fender"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1850</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Door -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Door">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Door"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Generic_Hood">
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Glass -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Glass">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Hatchback_Trunk">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Trunk"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Oil"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</hasListPrice>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Large_Windshield">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Windshield"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Glass"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">899</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather_Seat">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Seat"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</hasListPrice>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Limousine_Trunk">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Trunk"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Aluminium"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Oil"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</hasListPrice>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Medium_Windshield">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Windshield"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Glass"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">799</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Oil -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Oil">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Small_Windshield -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Small_Windshield">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Windshield"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Glass"/>
+        <hasAvailableAmout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</hasAvailableAmout>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">699.00</hasListPrice>
+        <hasMinimumDeliveryTime rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasMinimumDeliveryTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Bumper">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Bumper"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Seat">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Seat"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+        <hasListPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</hasListPrice>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Sports_Steering_Wheel">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Steeringwheel"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Leather"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Bumper">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Bumper"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Standard_Steering_Wheel">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Steeringwheel"/>
+        <usesMaterial rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Plastic"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Steel -->
+
+    <owl:NamedIndividual rdf:about="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Steel">
+        <rdf:type rdf:resource="http://www.jku.at/dke/praktikumdke/gruppe6/autohersteller1_audi#Material"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

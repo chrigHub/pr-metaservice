@@ -1,13 +1,13 @@
 package jku.dke.prmetaservice.entity;
 
-public class Result {
+public class Result{
     private String dataset;
     private String part;
     private Double price;
     private String brand;
     private String model;
 
-    public Result(String dataset, String part, Double price, String brand, String model) {
+    public Result(String dataset, String part, Double price, String brand, String model){
         this.dataset = dataset;
         this.part = part;
         this.price = price;
@@ -85,5 +85,4 @@ public class Result {
                 break;
         }
     }
-
 }
