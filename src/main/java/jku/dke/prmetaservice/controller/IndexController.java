@@ -182,11 +182,11 @@ public class IndexController {
     }
 
     @GetMapping("/confirm_order")
-    public String placeOrder(Model model, @RequestParam(name="part") String part, @RequestParam(name="price") double price, @RequestParam(name="supplier") String supplier, @RequestParam(name="fName") String fName, @RequestParam(name="lName") String lName, @RequestParam(name="zip") String zip, @RequestParam(name="city") String city, @RequestParam(name="address") String address) {
+    public String placeOrder(Model model,@RequestParam(name="mail") String mail, @RequestParam(name="part") String part, @RequestParam(name="price") double price, @RequestParam(name="supplier") String supplier, @RequestParam(name="fName") String fName, @RequestParam(name="lName") String lName, @RequestParam(name="zip") String zip, @RequestParam(name="city") String city, @RequestParam(name="address") String address) {
         this.updateModel(model);
         Order new_order = new Order(part, supplier, price, fName, lName, address, zip, city);
         this.orders.add(new_order);
-        //this.SendMail("chrigro96@gmx.at", "Your Order of " + part + "at a price of " + price + " was confirmed!");
+        this.SendMail(mail, "Your Order of " + part.replace("_", " ") + "at a price of " + price + "€ was confirmed!");
         model.addAttribute("part", part);
         model.addAttribute("price", price);
         model.addAttribute("fName", fName);
@@ -206,6 +206,7 @@ public class IndexController {
 
         // Assuming you are sending email from localhost
         String host = "smtp.gmail.com";
+        String pass = "*********";
 
         // Get system properties
         Properties properties = System.getProperties();
@@ -213,20 +214,15 @@ public class IndexController {
         // Setup mail server
 
         properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        properties.put("mail.smtp.user", from);
+        properties.put("mail.smtp.password", pass);
 
         // Get the Session object.// and pass username and password
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-
-            protected PasswordAuthentication getPasswordAuthentication() {
-
-                return new PasswordAuthentication("felix.winterleitner@gmail.com", "*******");
-
-            }
-
-        });
+        Session session = Session.getDefaultInstance(properties);
 
         try {
             // Create a default MimeMessage object.
@@ -246,7 +242,10 @@ public class IndexController {
 
             System.out.println("sending...");
             // Send message
-            Transport.send(message);
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
             System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
             mex.printStackTrace();
